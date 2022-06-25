@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<title>CV Maker</title>
+</head>
+<body>
+	
+	<div id="form">	
+		<h1>CV Maker</h1>
+		<form action="lab.php" method="post" enctype="multipart/form-data">
+			<table>
+				<th colspan="2">Personal Details</th>
+				<tr>
+					<td><label>Upload Your Picture: </label></td>
+					<td><input type="file" name="uploadfile" id="myfile" required></td>
+				</tr>
+				<tr>
+					<td><label>Full Name: </label></td>
+					<td><input type="text" name="name" size="30" required></td>
+				</tr>
+				<tr>
+					<td><label>Phone No.:</label></td>
+					<td><input type="number" name="phone" size="30" id="phone" required></td>
+				</tr>
+				<tr>
+					<td><label>Email Address:</label></td>
+					<td><input type="text" name="email" size="30" required></td>
+				</tr>
+				<tr>
+					<td><label>Gender:</label></td>
+					<td><input type="radio" value="male" name="gen">Male
+						<input type="radio" value="Female " name="gen">Female</td>
+					</tr>
+					<tr>
+						<td><label>Date of Birth:</label></td>
+						<td><input type="Date" name="dob" required></td>
+					</tr>
+					<tr>
+						<td><label>Address:</label></td>
+						<td><input type="text" name="address" size="30" required></td>
+					</tr>
+					<th colspan="2">Work Details</th>
+					<tr>
+						<td><label>Company Name: </label></td>
+						<td><input type="text" name="companyname" size="30" required></td>
+					</tr>
+					<tr>
+						<td><label>Current Designation:</label></td>
+						<td><input type="text" name="currentdes" size="30" required></td>
+					</tr>
+					<tr>
+						<td><label>Total Year Of Experience:</label></td>
+						<td><input type="text" name="exp" size="30" required></td>
+					</tr>
+					<tr>
+						<td><label>Details Of Work Experience:</label></td>
+						<td><textarea cols="31" rows="5" name="cnameexp" required></textarea></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>
+							<section class="input_fields_wrap">
+								<button class="add_field_button">Add More Fields</button>
+							</td>
+							<td>
+							</td>
+						</section>
+						
+					</tr>
+					<th colspan="2">Education Details</th>
+					<tr>
+						<td><label>Degree Program: </label></td>
+						<td><input type="text" name="degree" size="30" required></td>
+					</tr>
+					<tr>
+						<td><label>Degree Year:</label></td>
+						<td><input type="text" name="degreeyear" size="30" required></td>
+					</tr>
+					<tr>
+						<td><label>Obtained Marks:</label></td>
+						<td><input type="text" name="marks" size="30" required></td>
+					</tr>
+									<tr>
+						<td></td>
+						<td>
+							<section class="input_fields_wrap">
+								<button class="add_field_button">Add More Fields</button>
+							</td>
+							<td>
+							</td>
+						</section>
+						
+					</tr>
+					<th colspan="2">Skills</th>
+					<tr>
+						<td><label>Skill 1:</label></td>
+						<td><input type="text" name="skill1" size="30"></td>
+					</tr>
+					<tr>
+						<td><label>Skill 2:</label></td>
+						<td><input type="text" name="skill2" size="30"></td>
+					</tr>
+					<tr>
+						<td><label>Skill 3:</label></td>
+						<td><input type="text" name="skill3" size="30"></td>
+					</tr>
+					<tr>
+						<td><label>Skill 4:</label></td>
+						<td><input type="text" name="skill4" size="30"></td>
+					</tr>
+					<tr>
+						<td><label>Skill 5:</label></td>
+						<td><input type="text" name="skill5" size="30"></td>
+					</tr>
+				</table>
+				<button type="reset" id="reset">Reset</button>
+				<button type="submit" value="Submit" name="submit" id="subs">Submit </button>
+			</form>
+		</div>
+
+	</body>
+	</html>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+	var max_fields      = 10; //maximum input boxes allowed
+	var wrapper   		= $(".input_fields_wrap"); //Fields wrapper
+	var add_button      = $(".add_field_button"); //Add button ID
+	
+	var x = 1; //initlal text box count
+	$(add_button).click(function(e){ //on add input button click
+		e.preventDefault();
+		if(x < max_fields){ //max input box allowed
+			x++; //text box increment
+			$(wrapper).append('<h4>More Fields</h4>')
+			for (var i = 0 ; i<3 ; i++) {
+
+			$(wrapper).append('<tr><td><section><input type="text" name="mytext[]"/><a href="#" class="remove_field"><i class="fa fa-minus-square" style=" color:red"></i></a></section></td></tr>'); //add input box
+		}
+		$(wrapper).append('<tr><td><section><textarea cols="31" rows="5"></textarea><a href="#" class="remove_field"><i class="fa fa-minus-square" style=" color:red"></i></a></section></td></tr>')
+	}
+});
+	
+	$(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+		e.preventDefault(); $(this).parent('section').remove(); x--;
+	})
+});
+
+
+</script>
+
+<style type="text/css">
+	h1{
+		text-align: center;
+	}
+	body{
+		/*background-color: #474e5d;*/
+		background-image: url('8.jpeg') ;
+		background-size: 1800px;
+		background-repeat: no-repeat;
+		padding: 20px;
+		font-family: Arial, Helvetica, sans-serif;
+	}
+	div{
+		background-color: #fefefe;
+		border: 1px solid #888;
+		margin-right: 210px;
+		margin-left: 210px;
+		padding-left: 100px;
+		padding-right: 100px;
+		padding-bottom: 50px;
+		/*box-shadow: -5px -5px 10px;*/
+		box-shadow: 0 0 10px 5px;
+	}
+	th{
+		padding-bottom: 20px;
+		padding-top: 20px;
+		font-size: 20px;
+		text-align: left;
+		border-top: 1px solid black;
+		border-bottom:1px solid black;
+	}
+	td{
+		padding-right: 20px;
+		padding-bottom: 10px; 
+		padding-top: 10px;
+	}
+	input:not(#myfile),textarea{
+		border: none;
+		/*background: #f1f1f1;*/
+		background: #DCDCDC;
+		padding: 6px;
+		display: inline-block;
+
+	}
+	input:focus:not(#myfile) {
+		background-color: #ddd;
+		border: 3px solid #555;
+		-webkit-transition: 0.5s;
+		transition: 0.5s;
+	}
+	#phone{
+		width: 238px;
+	}
+	#subs,#reset {
+		background-color: #04AA6D;
+		color: white;
+		padding: 14px 20px;
+		margin-top: 20px;
+		border: none;
+		cursor: pointer;
+		width: 240px;
+		opacity: 0.9;
+	}
+	#reset{
+		background-color: #f44336;
+	}
+	#subs:hover,#reset:hover {
+		opacity:5;
+	}
+	h1{
+
+		background-color: black;/*#474e5d*/;
+		color: white;
+		padding-top: 20px;
+		padding-bottom: 20px;
+		border-radius: 25px;
+	}
+
+</style>
